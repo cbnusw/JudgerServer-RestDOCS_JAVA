@@ -1,0 +1,4 @@
+rootProject.name = 'judger'
+include 'judger-api'
+include 'judger-restdocs'
+
