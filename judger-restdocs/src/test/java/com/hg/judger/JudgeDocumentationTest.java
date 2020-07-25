@@ -47,7 +47,7 @@ public class JudgeDocumentationTest {
                 "int main(){\n" +
                 "\tint a, b;\n" +
                 "\tscanf(\"%d %d\", &a, &b);\n" +
-                "\tprintf(\"%d\", a+b);\n" +
+                "\tprintf(\"%d\", a-b);\n" +
                 "\treturn 0;\n" +
                 "}";
 
