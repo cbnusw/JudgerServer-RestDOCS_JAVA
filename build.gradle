@@ -16,7 +16,7 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'eclipse'
 
-    group = 'com.hg'
+    group = 'judger-api/main/java/com.hg.judger'
     version = '1.0'
     sourceCompatibility = 1.8
 
@@ -38,4 +38,8 @@ subprojects {
     test {
         useJUnitPlatform()
     }
+}
+
+dependencies {
+    implementation 'junit:junit:4.12'
 }

@@ -69,8 +69,8 @@ public class ShellCommandUtils {
             e.printStackTrace();
         } finally {
             try {
-                if (process != null) process.destroy();
                 if (successBufferReader != null) successBufferReader.close();
+                if (process != null) process.destroy();
                 if (errorBufferReader != null) errorBufferReader.close();
             } catch (IOException e1) {
                 e1.printStackTrace();
