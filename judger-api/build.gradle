@@ -45,7 +45,11 @@
 
 dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+<<<<<<< HEAD
     compile 'org.springframework.boot:spring-boot-configuration-processor'
+=======
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+>>>>>>> b4165d26fb0b30f6e61f2a728e0ffd1fc9059035
 
 }
 
