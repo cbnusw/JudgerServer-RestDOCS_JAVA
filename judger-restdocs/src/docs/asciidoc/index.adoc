@@ -1,0 +1,55 @@
+= Judger API Document
+hg.api.docs.com
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+:sectlinks:
+
+[[introduction]]
+== 소개
+
+HG Judger Spring Rest Docs API
+
+=== 공통 Response Body
+
+|===
+| field | 설명
+
+| `code`
+| 응답 코드
+
+| `message`
+| 예외사항 내용 등 응답 메세지
+
+| `data`
+| 실제 반환될 데이터
+|===
+
+[[Judger]]
+== Judge API
+
+=== Request
+
+CURL:
+
+include::{snippets}/judge-grade/curl-request.adoc[]
+
+Request Parameters:
+
+include::{snippets}/judge-grade/request-fields.adoc[]
+
+Request HTTP Example:
+
+include::{snippets}/judge-grade/http-request.adoc[]
+
+=== Response
+
+Response Fields:
+
+include::{snippets}/judge-grade/response-fields.adoc[]
+
+Response HTTP Example:
+
+include::{snippets}/judge-grade/http-response.adoc[]
