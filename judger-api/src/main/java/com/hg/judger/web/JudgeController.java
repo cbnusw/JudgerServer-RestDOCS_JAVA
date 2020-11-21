@@ -31,7 +31,7 @@ public class JudgeController {
         ScoringResult scoringResult = judgeService.run(submissionInfo);
 
         logger.info("scoringResult: {}", scoringResult);
-
+        System.out.println("test: "+scoringResult);
         return ResponseEntity.ok().body(scoringResult);
     }
 }

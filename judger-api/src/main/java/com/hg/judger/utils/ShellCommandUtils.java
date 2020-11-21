@@ -1,5 +1,6 @@
 package com.hg.judger.utils;
 
+import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +12,8 @@ public class ShellCommandUtils {
     private static final String BIN_SH = "/bin/sh";
     private static final String BIN_SH_C_FLAG = "-c";
     private static final Logger logger = LoggerFactory.getLogger(ShellCommandUtils.class);
+    public static boolean isCompileError=false;
+    public static boolean isRuntimeError=false;
 
     public static void execCommand(String command) {
         Process process = null;
@@ -50,12 +53,22 @@ public class ShellCommandUtils {
 
             // shell 실행이 정상 종료되었을 경우
             if (process.exitValue() == 0) {
+                System.out.println("test");
                 logger.info("success");
                 logger.info("success output : {}", successOutput.toString());
+                JSONObject jsonObject=new JSONObject(successOutput.toString());
+                String result= String.valueOf(jsonObject.getInt("result"));
+                System.out.println(result);
+                //runtime error
+                if(result=="4") isRuntimeError=true;
+                System.out.println("test");
             } else {
-                // shell 실행이 비정상 종료되었을 경우
+                // shell 실행이 비정상 종료되었을 경우 //compile error
                 logger.info("abnormal termination");
                 logger.info("abnormal termination OUTPUT : {}", errorOutput.toString());
+                if(errorOutput.toString().contains("test.c")) {
+                    isCompileError = true;
+                }
             }
 
             // shell 실행시 에러가 발생
@@ -69,8 +82,8 @@ public class ShellCommandUtils {
             e.printStackTrace();
         } finally {
             try {
-                if (successBufferReader != null) successBufferReader.close();
                 if (process != null) process.destroy();
+                if (successBufferReader != null) successBufferReader.close();
                 if (errorBufferReader != null) errorBufferReader.close();
             } catch (IOException e1) {
                 e1.printStackTrace();

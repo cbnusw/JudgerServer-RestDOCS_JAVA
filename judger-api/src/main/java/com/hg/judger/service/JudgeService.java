@@ -23,14 +23,28 @@ public class JudgeService {
     }
 
     public ScoringResult run(SubmissionInfo submissionInfo) throws IOException {
+
+        String language= submissionInfo.getLanguage();
+
+
+        ShellCommandUtils.isCompileError=false;
         ShellCommandUtils.execCommand(shellCommandProperties.getLocalInitCommand());
 
         createInputFile(submissionInfo.getInput());
-        createSourceFile(submissionInfo.getSource());
+        createSourceFile(submissionInfo.getSource(),language);
 
-        ShellCommandUtils.execCommand(shellCommandProperties.getcCompileCommand());
+        if(language.equals("c")){shellCommandProperties.getcCompileCommand();}
+        else if(language.equals("c++")){shellCommandProperties.getCppCompileCommand();}
+        else if(language.equals("java")){}
+        else if(language.equals("python")){}
+
+        //ShellCommandUtils.execCommand(shellCommandProperties.getcCompileCommand());
         ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
 
+        if(ShellCommandUtils.isCompileError==true)
+            return new ScoringResult("Compile Error");
+        else if(ShellCommandUtils.isRuntimeError==true)
+            return new ScoringResult("Runtime Error");
         return new ScoringResult(checkAnswer(submissionInfo.getAnswer()));
     }
 
@@ -40,8 +54,13 @@ public class JudgeService {
         fileWriter.close();
     }
 
-    private void createSourceFile(String source) throws IOException {
-        FileWriter fileWriter = new FileWriter(shellCommandProperties.getTesterDir() + "/test.c");
+    private void createSourceFile(String source,String language) throws IOException {
+        FileWriter fileWriter = null;
+        if(language.equals("c"))
+            fileWriter = new FileWriter(shellCommandProperties.getTesterDir() + "/test.c");
+        else if(language.equals("c++"))
+            fileWriter = new FileWriter(shellCommandProperties.getTesterDir() + "/test.cc");
+
         fileWriter.write(source);
         fileWriter.close();
     }
@@ -52,6 +71,8 @@ public class JudgeService {
         String temp;
         while ((temp = br.readLine()) != null) output += temp;
 
+        System.out.println("Testcase Answer: "+ answer);
+        System.out.println("Compile Answer: "+ output);
         if (output.equals(answer)) {
             return "CORRECT ANSWER !!";
         }

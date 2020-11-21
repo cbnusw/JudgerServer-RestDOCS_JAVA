@@ -16,8 +16,8 @@ public class ScoringResult {
 
     @Override
     public String toString() {
-        return "ScoringResult{" +
-                "scoringCode='" + scoringCode + '\'' +
-                '}';
+        return scoringCode;
     }
+
+
 }
