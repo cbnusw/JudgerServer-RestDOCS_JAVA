@@ -10,6 +10,8 @@ public class ShellCommandProperties {
     private String dockerDir;
     private String localInitCommand;
     private String cCompileCommand;
+
+
     private String cppCompileCommand;
 
 
@@ -35,6 +37,10 @@ public class ShellCommandProperties {
 
     public void setcRunCommand(String cRunCommand) {
         this.cRunCommand = cRunCommand;
+    }
+
+    public void setCppCompileCommand(String cppCompileCommand) {
+        this.cppCompileCommand = cppCompileCommand;
     }
 
     public String getTesterDir() {
