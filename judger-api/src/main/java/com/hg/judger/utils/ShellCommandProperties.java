@@ -13,6 +13,7 @@ public class ShellCommandProperties {
 
 
     private String cppCompileCommand;
+    private String javaCompileCommand;
 
 
 
@@ -43,6 +44,10 @@ public class ShellCommandProperties {
         this.cppCompileCommand = cppCompileCommand;
     }
 
+    public void setJavaCompileCommand(String javaCompileCommand) {
+        this.javaCompileCommand = javaCompileCommand;
+    }
+
     public String getTesterDir() {
         return testerDir;
     }
@@ -64,5 +69,9 @@ public class ShellCommandProperties {
     }
     public String getCppCompileCommand() {
         return cppCompileCommand;
+    }
+
+    public String getJavaCompileCommand() {
+        return javaCompileCommand;
     }
 }

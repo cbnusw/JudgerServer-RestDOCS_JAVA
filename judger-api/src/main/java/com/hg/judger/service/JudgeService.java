@@ -37,6 +37,9 @@ public class JudgeService {
         else if(language.equals("c++")){
             ShellCommandUtils.execCommand(shellCommandProperties.getCppCompileCommand());
         }
+        else if(language.equals("java")){
+            ShellCommandUtils.execCommand(shellCommandProperties.getJavaCompileCommand());
+        }
 
         ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
 
@@ -59,6 +62,8 @@ public class JudgeService {
             fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.c");
         }else if(language.equals("c++")){
             fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.cc");
+        }else if(language.equals("java")){
+            fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.java");
         }
 
         fileWriter.write(source);
