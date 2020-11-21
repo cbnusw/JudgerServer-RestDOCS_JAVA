@@ -25,7 +25,7 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.json:json:20190722'
+        //implementation 'org.json:json:20190722'
         implementation 'org.springframework.boot:spring-boot-starter'
         implementation 'org.springframework.boot:spring-boot-starter-web'
 

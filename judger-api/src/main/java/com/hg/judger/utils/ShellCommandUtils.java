@@ -1,6 +1,5 @@
 package com.hg.judger.utils;
 
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,11 +55,11 @@ public class ShellCommandUtils {
                 System.out.println("test");
                 logger.info("success");
                 logger.info("success output : {}", successOutput.toString());
-                JSONObject jsonObject=new JSONObject(successOutput.toString());
-                String result= String.valueOf(jsonObject.getInt("result"));
-                System.out.println(result);
+                //JSONObject jsonObject=new JSONObject(successOutput.toString());
+                //String result= String.valueOf(jsonObject.getInt("result"));
+                //System.out.println(result);
                 //runtime error
-                if(result=="4") isRuntimeError=true;
+                //if(result=="4") isRuntimeError=true;
                 System.out.println("test");
             } else {
                 // shell 실행이 비정상 종료되었을 경우 //compile error
