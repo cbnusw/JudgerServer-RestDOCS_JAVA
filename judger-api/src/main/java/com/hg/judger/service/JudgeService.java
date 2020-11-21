@@ -33,15 +33,18 @@ public class JudgeService {
 
         if(language.equals("c")) {
             ShellCommandUtils.execCommand(shellCommandProperties.getcCompileCommand());
+            ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
         }
         else if(language.equals("c++")){
             ShellCommandUtils.execCommand(shellCommandProperties.getCppCompileCommand());
+            ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
         }
         else if(language.equals("java")){
             ShellCommandUtils.execCommand(shellCommandProperties.getJavaCompileCommand());
+            ShellCommandUtils.execCommand(shellCommandProperties.getJavaRunCommand());
         }
 
-        ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
+
 
         if(ShellCommandUtils.isCompileError==true)
             return new ScoringResult("Compile Error");

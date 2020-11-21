@@ -18,6 +18,7 @@ public class ShellCommandProperties {
 
 
     private String cRunCommand;
+    private String javaRunCommand;
 
 
     public void setTesterDir(String testerDir) {
@@ -48,6 +49,10 @@ public class ShellCommandProperties {
         this.javaCompileCommand = javaCompileCommand;
     }
 
+    public void setJavaRunCommand(String javaRunCommand) {
+        this.javaRunCommand = javaRunCommand;
+    }
+
     public String getTesterDir() {
         return testerDir;
     }
@@ -73,5 +78,9 @@ public class ShellCommandProperties {
 
     public String getJavaCompileCommand() {
         return javaCompileCommand;
+    }
+
+    public String getJavaRunCommand() {
+        return javaRunCommand;
     }
 }
