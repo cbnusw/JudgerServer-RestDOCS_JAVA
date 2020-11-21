@@ -45,7 +45,7 @@ public class JudgeService {
         }
         else if(language.equals("python")){
             ShellCommandUtils.execCommand(shellCommandProperties.getPythonCompileCommand());
-            String test=shellCommandProperties.getPythonCompileCommand();
+            String test=shellCommandProperties.getPythonRunCommand();
             System.out.println(test);
             ShellCommandUtils.execCommand(shellCommandProperties.getPythonRunCommand());
         }
