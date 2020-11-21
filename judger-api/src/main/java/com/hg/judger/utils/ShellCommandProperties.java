@@ -14,11 +14,13 @@ public class ShellCommandProperties {
 
     private String cppCompileCommand;
     private String javaCompileCommand;
+    private String pythonCompileCommand;
 
 
 
     private String cRunCommand;
     private String javaRunCommand;
+    private String pythonRunCommand;
 
 
     public void setTesterDir(String testerDir) {
@@ -53,6 +55,14 @@ public class ShellCommandProperties {
         this.javaRunCommand = javaRunCommand;
     }
 
+    public void setPythonCompileCommand(String pythonCompileCommand) {
+        this.pythonCompileCommand = pythonCompileCommand;
+    }
+
+    public void setPythonRunCommand(String pythonRunCommand) {
+        this.pythonRunCommand = pythonRunCommand;
+    }
+
     public String getTesterDir() {
         return testerDir;
     }
@@ -76,11 +86,19 @@ public class ShellCommandProperties {
         return cppCompileCommand;
     }
 
+    public String getPythonCompileCommand() {
+        return pythonCompileCommand;
+    }
+
     public String getJavaCompileCommand() {
         return javaCompileCommand;
     }
 
     public String getJavaRunCommand() {
         return javaRunCommand;
+    }
+
+    public String getPythonRunCommand() {
+        return pythonRunCommand;
     }
 }

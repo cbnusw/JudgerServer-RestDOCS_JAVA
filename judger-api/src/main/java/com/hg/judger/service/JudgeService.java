@@ -43,6 +43,11 @@ public class JudgeService {
             ShellCommandUtils.execCommand(shellCommandProperties.getJavaCompileCommand());
             ShellCommandUtils.execCommand(shellCommandProperties.getJavaRunCommand());
         }
+        else if(language.equals("python")){
+            ShellCommandUtils.execCommand(shellCommandProperties.getPythonCompileCommand());
+            //ShellCommandUtils.execCommand(shellCommandProperties.getPythonRunCommand());
+        }
+
 
 
 
@@ -67,6 +72,8 @@ public class JudgeService {
             fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.cc");
         }else if(language.equals("java")){
             fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.java");
+        }else if(language.equals("python")){
+            fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.py");
         }
 
         fileWriter.write(source);
