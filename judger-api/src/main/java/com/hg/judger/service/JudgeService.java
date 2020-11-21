@@ -47,7 +47,7 @@ public class JudgeService {
             ShellCommandUtils.execCommand(shellCommandProperties.getPythonCompileCommand());
             String test=shellCommandProperties.getPythonCompileCommand();
             System.out.println(test);
-            //ShellCommandUtils.execCommand(shellCommandProperties.getPythonRunCommand());
+            ShellCommandUtils.execCommand(shellCommandProperties.getPythonRunCommand());
         }
 
 
