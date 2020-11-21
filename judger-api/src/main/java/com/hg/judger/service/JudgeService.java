@@ -26,10 +26,18 @@ public class JudgeService {
         ShellCommandUtils.isCompileError=false;
         ShellCommandUtils.execCommand(shellCommandProperties.getLocalInitCommand());
 
-        createInputFile(submissionInfo.getInput());
-        createSourceFile(submissionInfo.getSource());
+        String language=submissionInfo.getLanguage();
 
-        ShellCommandUtils.execCommand(shellCommandProperties.getcCompileCommand());
+        createInputFile(submissionInfo.getInput());
+        createSourceFile(submissionInfo.getSource(),language);
+
+        if(language.equals("c")) {
+            ShellCommandUtils.execCommand(shellCommandProperties.getcCompileCommand());
+        }
+        else if(language.equals("c++")){
+            ShellCommandUtils.execCommand(shellCommandProperties.getCppCompileCommand());
+        }
+
         ShellCommandUtils.execCommand(shellCommandProperties.getcRunCommand());
 
         if(ShellCommandUtils.isCompileError==true)
@@ -45,8 +53,14 @@ public class JudgeService {
         fileWriter.close();
     }
 
-    private void createSourceFile(String source) throws IOException {
-        FileWriter fileWriter = new FileWriter(shellCommandProperties.getTesterDir() + "/test.c");
+    private void createSourceFile(String source, String language) throws IOException {
+        FileWriter fileWriter=null;
+        if(language.equals("c")){
+            fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.c");
+        }else if(language.equals("c++")){
+            fileWriter= new FileWriter(shellCommandProperties.getTesterDir() + "/test.cc");
+        }
+
         fileWriter.write(source);
         fileWriter.close();
     }
